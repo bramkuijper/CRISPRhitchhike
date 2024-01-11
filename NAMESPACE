@@ -1,0 +1,4 @@
+useDynLib(CRISPRhitchhike, .registration=TRUE)
+importFrom(Rcpp, evalCpp)
+export(CRISPRhh)
+
