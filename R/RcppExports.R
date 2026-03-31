@@ -2,11 +2,38 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 #' Run a single simulation of (S1) in Domingues, Kuijper et al 
+#'
 #' @param kappa strength of density-dependence
+#' @param gammaPG1 FGE loss rate in P (promiscuous) hosts of G1 FGEs
+#' @param gammaPG2 FGE loss rate in P (promiscuous) hosts of G2 FGEs
+#' @param gammaCG1 FGE loss rate in C (choosy) hosts of G1 FGEs
+#' @param gammaCG2 FGE loss rate in C (choosy) hosts of G2 FGEs
+#' @param dSP mortality rate of susceptible P (promiscuous) hosts 
+#' @param dSC mortality rate of susceptible C (choosy) hosts 
+#' @param dPG1 mortality rate in P (promiscuous) hosts of G1 FGEs
+#' @param dPG2 mortality rate in P (promiscuous) hosts of G2 FGEs
+#' @param dCG1 mortality rate in C (choosy) hosts of G1 FGEs
+#' @param dCG2 mortality rate in C (choosy) hosts of G2 FGEs
+#' @param psiG1 force of infection by G1 FGEs
+#' @param psiG2 force of infection by G2 FGEs
+#' @param FG1 fecundity benefit of the G1 FGE
+#' @param FG2 fecundity benefit of the G2 FGE
+#' @param FG1G2 fecundity benefit of the G1 + G2 FGEs when superinfected
+#' @param pi probability of resisting infection by the G1 FGE
+#' @param c cost of resistance
+#' @param sigma probability of superinfection
+#' @param init_S initial density of S
+#' @param init_PG1 initial density of P hosts infected with G1 
+#' @param init_PG2 initial density of P hosts infected with G2
+#' @param init_CG1 initial density of C hosts infected with G1 
+#' @param init_CG2 initial density of C hosts infected with G2
+#' @param demog_feedback boolean allowing for demographical feedbacks or not
+#' @param debug boolean whether to give debug output or not
+#' @param eul Euler's constant
 #' @returns A \code{data.frame} that contains the various frequencies
 #' @export
 #' @rawNamespace importFrom(Rcpp, sourceCpp);useDynLib("CRISPRhitchhike");
-CRISPRhh <- function(kappa = 0.001) {
-    .Call(`_CRISPRhitchhike_CRISPRhh`, kappa)
+CRISPRhh <- function(kappa = 0.001, gammaPG1 = 1, gammaPG2 = 1, gammaCG1 = 1, gammaCG2 = 1, dSP = 5, dSC = 5, dPG1 = 5, dPG2 = 1, dCG1 = 5, dCG2 = 1, psiG1 = 10, psiG2 = 10, FG1 = 6, FG2 = 10, FG1G2 = 0, pi = 0.5, c = 0.02, sigma = 0.0, init_S = 50, init_PG1 = 1, init_PG2 = 1, init_CG1 = 1, init_CG2 = 1, demog_feedback = TRUE, debug = FALSE, eul = 0.01) {
+    .Call(`_CRISPRhitchhike_CRISPRhh`, kappa, gammaPG1, gammaPG2, gammaCG1, gammaCG2, dSP, dSC, dPG1, dPG2, dCG1, dCG2, psiG1, psiG2, FG1, FG2, FG1G2, pi, c, sigma, init_S, init_PG1, init_PG2, init_CG1, init_CG2, demog_feedback, debug, eul)
 }
 

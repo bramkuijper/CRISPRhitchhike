@@ -1,0 +1,32 @@
+---
+output: github_document 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE, 
+                     comment = "#>",
+                      fig.path = "man/figures/README-",
+                      out.width = "100%" 
+)
+```
+
+# CRISPRhitchhike
+The goal of this package is to run the simulations corresponding to the 
+paper "The benefits of CRISPR–Cas immunity to discriminate good from better infections"
+by Domingues et al.
+
+## Installation
+You can install the package as follows:
+```{r, eval=F}
+library("devtools")
+install_github("bramkuijper\CRISPRhitchhike")
+```
+
+## Usage
+Use the function `CRISPRhh()` to run a single simulation, data of which
+will be returned in a `data.frame`:
+```{r, eval=F}
+library("CRISPRhitchhike")
+resulting_data <- CRISPRhh()
+```
+
