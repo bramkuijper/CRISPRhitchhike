@@ -95,7 +95,11 @@ void stream_parser(std::stringstream &data_stream,
     }
 } // end stream_parser()    
 
-//' Run a single simulation of (S1) in Domingues, Kuijper et al 
+//' Run a single simulation of (S1) in Domingues, Kuijper et al.
+//' Notation may differ from what is in the main manuscript 
+//' P is the non-immune host that accepts all foreign genetic elements
+//' C is the CRISPR-immune host that accepts only G2 foreign genetic elements
+//' most importantly, G1 is a worse foreign genetic element than G2 
 //'
 //' @param kappa strength of density-dependence
 //' @param gammaPG1 FGE loss rate in P (promiscuous) hosts of G1 FGEs
@@ -119,7 +123,7 @@ void stream_parser(std::stringstream &data_stream,
 //' @param init_S initial density of S
 //' @param init_PG1 initial density of P hosts infected with G1 
 //' @param init_PG2 initial density of P hosts infected with G2
-//' @param init_CG1 initial density of C hosts infected with G1 
+//' @param init_CG1 initial density of C hosts infected with G1, this is only nonzero if pi < 1, otherwise a choosy host can never be infected with a G1 
 //' @param init_CG2 initial density of C hosts infected with G2
 //' @param demog_feedback boolean allowing for demographical feedbacks or not
 //' @param debug boolean whether to give debug output or not
@@ -193,8 +197,8 @@ Rcpp::DataFrame CRISPRhh(
     
     // with the initial population size of CG1
     // we need to make sure that fully resistant individuals
-    // cannot be infected by G1
-    pars.init_popsize_infected[C][G1] = (1.0 - pi) * init_CG2;
+    // cannot be infected by G1, as they are fully resistant...
+    pars.init_popsize_infected[C][G1] = init_CG1;
     pars.init_popsize_infected[C][G2] = init_CG2;
     
     pars.demog_feedback = demog_feedback;
