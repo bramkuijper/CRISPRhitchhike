@@ -2,7 +2,11 @@
 % Please edit documentation in R/RcppExports.R
 \name{CRISPRhh}
 \alias{CRISPRhh}
-\title{Run a single simulation of (S1) in Domingues, Kuijper et al}
+\title{Run a single simulation of (S1) in Domingues, Kuijper et al.
+Notation may differ from what is in the main manuscript 
+P is the non-immune host that accepts all foreign genetic elements
+C is the CRISPR-immune host that accepts only G2 foreign genetic elements
+most importantly, G1 is a worse foreign genetic element than G2}
 \usage{
 CRISPRhh(
   kappa = 0.001,
@@ -31,7 +35,8 @@ CRISPRhh(
   init_CG2 = 1,
   demog_feedback = TRUE,
   debug = FALSE,
-  eul = 0.01
+  eul = 0.01,
+  max_time = 500000000L
 )
 }
 \arguments{
@@ -88,10 +93,16 @@ CRISPRhh(
 \item{debug}{boolean whether to give debug output or not}
 
 \item{eul}{Euler's constant}
+
+\item{max_time}{The maximum number of time steps the numerical simulation shoujld run for}
 }
 \value{
 A \code{data.frame} that contains the various frequencies
 }
 \description{
-Run a single simulation of (S1) in Domingues, Kuijper et al
+Run a single simulation of (S1) in Domingues, Kuijper et al.
+Notation may differ from what is in the main manuscript 
+P is the non-immune host that accepts all foreign genetic elements
+C is the CRISPR-immune host that accepts only G2 foreign genetic elements
+most importantly, G1 is a worse foreign genetic element than G2
 }

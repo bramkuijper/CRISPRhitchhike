@@ -1,6 +1,8 @@
 #include <Rcpp.h>
 #include <cstdio>
 #include <sstream>
+#include <string>
+#include <vector>
 #include <regex>
 #include "solver.h"
 #include "parameters.h"
@@ -123,11 +125,12 @@ void stream_parser(std::stringstream &data_stream,
 //' @param init_S initial density of S
 //' @param init_PG1 initial density of P hosts infected with G1 
 //' @param init_PG2 initial density of P hosts infected with G2
-//' @param init_CG1 initial density of C hosts infected with G1, this is only nonzero if pi < 1, otherwise a choosy host can never be infected with a G1 
+//' @param init_CG1 initial density of C hosts infected with G1
 //' @param init_CG2 initial density of C hosts infected with G2
 //' @param demog_feedback boolean allowing for demographical feedbacks or not
 //' @param debug boolean whether to give debug output or not
 //' @param eul Euler's constant
+//' @param max_time The maximum number of time steps the numerical simulation shoujld run for
 //' @returns A \code{data.frame} that contains the various frequencies
 //' @export
 //' @rawNamespace importFrom(Rcpp, sourceCpp);useDynLib("CRISPRhitchhike");
@@ -160,6 +163,7 @@ Rcpp::DataFrame CRISPRhh(
         ,bool demog_feedback=true
         ,bool debug=false
         ,double eul=0.01
+        ,unsigned long max_time=5e08
         )
 {
     Parameters pars;
@@ -205,6 +209,8 @@ Rcpp::DataFrame CRISPRhh(
     pars.debug = debug;
     
     pars.eul = eul;
+
+    pars.max_ecol_time = max_time;
     
     // stringstream to store model output from the solver
     std::stringstream model_output;
