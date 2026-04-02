@@ -29,6 +29,7 @@ CRISPRhh(
   c = 0.02,
   sigma = 0,
   init_S = 50,
+  init_fraction_SC = 0.5,
   init_PG1 = 1,
   init_PG2 = 1,
   init_CG1 = 1,
@@ -79,6 +80,8 @@ CRISPRhh(
 \item{sigma}{probability of superinfection}
 
 \item{init_S}{initial density of S}
+
+\item{init_fraction_SC}{initial fraction of S that has the C allele, remainder has the P allele}
 
 \item{init_PG1}{initial density of P hosts infected with G1}
 

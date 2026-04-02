@@ -123,6 +123,7 @@ void stream_parser(std::stringstream &data_stream,
 //' @param c cost of resistance
 //' @param sigma probability of superinfection
 //' @param init_S initial density of S
+//' @param init_fraction_SC initial fraction of S that has the C allele, remainder has the P allele
 //' @param init_PG1 initial density of P hosts infected with G1 
 //' @param init_PG2 initial density of P hosts infected with G2
 //' @param init_CG1 initial density of C hosts infected with G1
@@ -156,6 +157,7 @@ Rcpp::DataFrame CRISPRhh(
         ,double c=0.02
         ,double sigma=0.0
         ,double init_S=50
+        ,double init_fraction_SC=0.5
         ,double init_PG1=1
         ,double init_PG2=1
         ,double init_CG1=1
@@ -193,8 +195,8 @@ Rcpp::DataFrame CRISPRhh(
     pars.dI[C][G1] = dCG1;
     pars.dI[C][G2] = dCG2;
     
-    pars.init_popsize[P] = init_S/2;
-    pars.init_popsize[C] = init_S/2;
+    pars.init_popsize[P] = init_S * (1.0 - init_fraction_SC);
+    pars.init_popsize[C] = init_S * init_fraction_SC;
     
     pars.init_popsize_infected[P][G1] = init_PG1;
     pars.init_popsize_infected[P][G2] = init_PG2;

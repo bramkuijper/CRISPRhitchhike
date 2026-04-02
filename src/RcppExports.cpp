@@ -11,8 +11,8 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
 // CRISPRhh
-Rcpp::DataFrame CRISPRhh(double kappa, double gammaPG1, double gammaPG2, double gammaCG1, double gammaCG2, double dSP, double dSC, double dPG1, double dPG2, double dCG1, double dCG2, double psiG1, double psiG2, double FG1, double FG2, double FG1G2, double pi, double c, double sigma, double init_S, double init_PG1, double init_PG2, double init_CG1, double init_CG2, bool demog_feedback, bool debug, double eul, unsigned long max_time);
-RcppExport SEXP _CRISPRhitchhike_CRISPRhh(SEXP kappaSEXP, SEXP gammaPG1SEXP, SEXP gammaPG2SEXP, SEXP gammaCG1SEXP, SEXP gammaCG2SEXP, SEXP dSPSEXP, SEXP dSCSEXP, SEXP dPG1SEXP, SEXP dPG2SEXP, SEXP dCG1SEXP, SEXP dCG2SEXP, SEXP psiG1SEXP, SEXP psiG2SEXP, SEXP FG1SEXP, SEXP FG2SEXP, SEXP FG1G2SEXP, SEXP piSEXP, SEXP cSEXP, SEXP sigmaSEXP, SEXP init_SSEXP, SEXP init_PG1SEXP, SEXP init_PG2SEXP, SEXP init_CG1SEXP, SEXP init_CG2SEXP, SEXP demog_feedbackSEXP, SEXP debugSEXP, SEXP eulSEXP, SEXP max_timeSEXP) {
+Rcpp::DataFrame CRISPRhh(double kappa, double gammaPG1, double gammaPG2, double gammaCG1, double gammaCG2, double dSP, double dSC, double dPG1, double dPG2, double dCG1, double dCG2, double psiG1, double psiG2, double FG1, double FG2, double FG1G2, double pi, double c, double sigma, double init_S, double init_fraction_SC, double init_PG1, double init_PG2, double init_CG1, double init_CG2, bool demog_feedback, bool debug, double eul, unsigned long max_time);
+RcppExport SEXP _CRISPRhitchhike_CRISPRhh(SEXP kappaSEXP, SEXP gammaPG1SEXP, SEXP gammaPG2SEXP, SEXP gammaCG1SEXP, SEXP gammaCG2SEXP, SEXP dSPSEXP, SEXP dSCSEXP, SEXP dPG1SEXP, SEXP dPG2SEXP, SEXP dCG1SEXP, SEXP dCG2SEXP, SEXP psiG1SEXP, SEXP psiG2SEXP, SEXP FG1SEXP, SEXP FG2SEXP, SEXP FG1G2SEXP, SEXP piSEXP, SEXP cSEXP, SEXP sigmaSEXP, SEXP init_SSEXP, SEXP init_fraction_SCSEXP, SEXP init_PG1SEXP, SEXP init_PG2SEXP, SEXP init_CG1SEXP, SEXP init_CG2SEXP, SEXP demog_feedbackSEXP, SEXP debugSEXP, SEXP eulSEXP, SEXP max_timeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -36,6 +36,7 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< double >::type c(cSEXP);
     Rcpp::traits::input_parameter< double >::type sigma(sigmaSEXP);
     Rcpp::traits::input_parameter< double >::type init_S(init_SSEXP);
+    Rcpp::traits::input_parameter< double >::type init_fraction_SC(init_fraction_SCSEXP);
     Rcpp::traits::input_parameter< double >::type init_PG1(init_PG1SEXP);
     Rcpp::traits::input_parameter< double >::type init_PG2(init_PG2SEXP);
     Rcpp::traits::input_parameter< double >::type init_CG1(init_CG1SEXP);
@@ -44,13 +45,13 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< bool >::type debug(debugSEXP);
     Rcpp::traits::input_parameter< double >::type eul(eulSEXP);
     Rcpp::traits::input_parameter< unsigned long >::type max_time(max_timeSEXP);
-    rcpp_result_gen = Rcpp::wrap(CRISPRhh(kappa, gammaPG1, gammaPG2, gammaCG1, gammaCG2, dSP, dSC, dPG1, dPG2, dCG1, dCG2, psiG1, psiG2, FG1, FG2, FG1G2, pi, c, sigma, init_S, init_PG1, init_PG2, init_CG1, init_CG2, demog_feedback, debug, eul, max_time));
+    rcpp_result_gen = Rcpp::wrap(CRISPRhh(kappa, gammaPG1, gammaPG2, gammaCG1, gammaCG2, dSP, dSC, dPG1, dPG2, dCG1, dCG2, psiG1, psiG2, FG1, FG2, FG1G2, pi, c, sigma, init_S, init_fraction_SC, init_PG1, init_PG2, init_CG1, init_CG2, demog_feedback, debug, eul, max_time));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_CRISPRhitchhike_CRISPRhh", (DL_FUNC) &_CRISPRhitchhike_CRISPRhh, 28},
+    {"_CRISPRhitchhike_CRISPRhh", (DL_FUNC) &_CRISPRhitchhike_CRISPRhh, 29},
     {NULL, NULL, 0}
 };
 

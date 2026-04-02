@@ -27,6 +27,7 @@
 #' @param c cost of resistance
 #' @param sigma probability of superinfection
 #' @param init_S initial density of S
+#' @param init_fraction_SC initial fraction of S that has the C allele, remainder has the P allele
 #' @param init_PG1 initial density of P hosts infected with G1 
 #' @param init_PG2 initial density of P hosts infected with G2
 #' @param init_CG1 initial density of C hosts infected with G1
@@ -38,7 +39,7 @@
 #' @returns A \code{data.frame} that contains the various frequencies
 #' @export
 #' @rawNamespace importFrom(Rcpp, sourceCpp);useDynLib("CRISPRhitchhike");
-CRISPRhh <- function(kappa = 0.001, gammaPG1 = 1, gammaPG2 = 1, gammaCG1 = 1, gammaCG2 = 1, dSP = 5, dSC = 5, dPG1 = 5, dPG2 = 1, dCG1 = 5, dCG2 = 1, psiG1 = 10, psiG2 = 10, FG1 = 6, FG2 = 10, FG1G2 = 0, pi = 0.5, c = 0.02, sigma = 0.0, init_S = 50, init_PG1 = 1, init_PG2 = 1, init_CG1 = 1, init_CG2 = 1, demog_feedback = TRUE, debug = FALSE, eul = 0.01, max_time = 5e08L) {
-    .Call(`_CRISPRhitchhike_CRISPRhh`, kappa, gammaPG1, gammaPG2, gammaCG1, gammaCG2, dSP, dSC, dPG1, dPG2, dCG1, dCG2, psiG1, psiG2, FG1, FG2, FG1G2, pi, c, sigma, init_S, init_PG1, init_PG2, init_CG1, init_CG2, demog_feedback, debug, eul, max_time)
+CRISPRhh <- function(kappa = 0.001, gammaPG1 = 1, gammaPG2 = 1, gammaCG1 = 1, gammaCG2 = 1, dSP = 5, dSC = 5, dPG1 = 5, dPG2 = 1, dCG1 = 5, dCG2 = 1, psiG1 = 10, psiG2 = 10, FG1 = 6, FG2 = 10, FG1G2 = 0, pi = 0.5, c = 0.02, sigma = 0.0, init_S = 50, init_fraction_SC = 0.5, init_PG1 = 1, init_PG2 = 1, init_CG1 = 1, init_CG2 = 1, demog_feedback = TRUE, debug = FALSE, eul = 0.01, max_time = 5e08L) {
+    .Call(`_CRISPRhitchhike_CRISPRhh`, kappa, gammaPG1, gammaPG2, gammaCG1, gammaCG2, dSP, dSC, dPG1, dPG2, dCG1, dCG2, psiG1, psiG2, FG1, FG2, FG1G2, pi, c, sigma, init_S, init_fraction_SC, init_PG1, init_PG2, init_CG1, init_CG2, demog_feedback, debug, eul, max_time)
 }
 
