@@ -71,13 +71,13 @@ CRISPRhh(
 
 \item{FG2}{fecundity benefit of the G2 FGE}
 
-\item{FG1G2}{fecundity benefit of the G1 + G2 FGEs when superinfected}
+\item{FG1G2}{fecundity benefit of the G1 + G2 FGEs when coinfected}
 
 \item{pi}{probability of resisting infection by the G1 FGE}
 
 \item{c}{cost of resistance}
 
-\item{sigma}{probability of superinfection}
+\item{sigma}{probability of coinfection}
 
 \item{init_S}{initial density of S}
 

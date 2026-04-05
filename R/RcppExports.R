@@ -22,10 +22,10 @@
 #' @param psiG2 force of infection by G2 FGEs
 #' @param FG1 fecundity benefit of the G1 FGE
 #' @param FG2 fecundity benefit of the G2 FGE
-#' @param FG1G2 fecundity benefit of the G1 + G2 FGEs when superinfected
+#' @param FG1G2 fecundity benefit of the G1 + G2 FGEs when coinfected 
 #' @param pi probability of resisting infection by the G1 FGE
 #' @param c cost of resistance
-#' @param sigma probability of superinfection
+#' @param sigma probability of coinfection
 #' @param init_S initial density of S
 #' @param init_fraction_SC initial fraction of S that has the C allele, remainder has the P allele
 #' @param init_PG1 initial density of P hosts infected with G1 
