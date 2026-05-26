@@ -22,6 +22,7 @@ CRISPRhh(
   dCG2 = 1,
   psiG1 = 10,
   psiG2 = 10,
+  FS = 2,
   FG1 = 6,
   FG2 = 10,
   FG1G2 = 0,
@@ -67,11 +68,13 @@ CRISPRhh(
 
 \item{psiG2}{force of infection by G2 FGEs}
 
-\item{FG1}{fecundity benefit of the G1 FGE}
+\item{FS}{fecundity of susceptibles}
 
-\item{FG2}{fecundity benefit of the G2 FGE}
+\item{FG1}{fecundity of the G1 FGE}
 
-\item{FG1G2}{fecundity benefit of the G1 + G2 FGEs when coinfected}
+\item{FG2}{fecundity of the G2 FGE}
+
+\item{FG1G2}{fecundity of the G1 + G2 FGEs when coinfected}
 
 \item{pi}{probability of resisting infection by the G1 FGE}
 

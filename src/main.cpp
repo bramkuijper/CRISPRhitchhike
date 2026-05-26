@@ -116,9 +116,10 @@ void stream_parser(std::stringstream &data_stream,
 //' @param dCG2 mortality rate in C (choosy) hosts of G2 FGEs
 //' @param psiG1 force of infection by G1 FGEs
 //' @param psiG2 force of infection by G2 FGEs
-//' @param FG1 fecundity benefit of the G1 FGE
-//' @param FG2 fecundity benefit of the G2 FGE
-//' @param FG1G2 fecundity benefit of the G1 + G2 FGEs when coinfected 
+//' @param FS fecundity of susceptibles  
+//' @param FG1 fecundity of the G1 FGE
+//' @param FG2 fecundity of the G2 FGE
+//' @param FG1G2 fecundity of the G1 + G2 FGEs when coinfected 
 //' @param pi probability of resisting infection by the G1 FGE
 //' @param c cost of resistance
 //' @param sigma probability of coinfection
@@ -150,6 +151,7 @@ Rcpp::DataFrame CRISPRhh(
         ,double dCG2=1
         ,double psiG1=10
         ,double psiG2=10
+        ,double FS=2
         ,double FG1=6
         ,double FG2=10
         ,double FG1G2=0
@@ -179,6 +181,8 @@ Rcpp::DataFrame CRISPRhh(
     
     pars.psi[G1] = psiG1;
     pars.psi[G2] = psiG2;
+
+    pars.FS = FS;
     
     pars.F[G1] = FG1;
     pars.F[G2] = FG2;
