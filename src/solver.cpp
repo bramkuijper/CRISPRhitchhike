@@ -246,7 +246,7 @@ void Solver::write_data()
 
         data_file << clamp(popsize_superinfected[host_type_idx]) << ";";
 
-//        data_file << clamp(dSdt(static_cast<HostType>(host_type_idx))) << ";";
+        data_file << clamp(dSdt(static_cast<HostType>(host_type_idx))) << ";";
 
         for (int phage_type_idx = 0; 
                 phage_type_idx < 2; ++phage_type_idx)
@@ -260,7 +260,9 @@ void Solver::write_data()
             data_file << clamp(popsize_infected[host_type_idx][phage_type_idx] / 
                 totals_pc[host_type_idx]) << ";";
         
- //           data_file << clamp(dIdt(static_cast<HostType>(host_type_idx), static_cast<PhageType>(phage_type_idx))) << ";";
+            data_file << clamp(
+                    dIdt(static_cast<HostType>(host_type_idx), 
+                        static_cast<PhageType>(phage_type_idx))) << ";";
         }
     }
 
