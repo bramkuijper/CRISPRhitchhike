@@ -290,7 +290,10 @@ void Solver::write_data_headers()
             data_file << "p" << (phage_type_idx == G1 ? "G1" : "G2") <<
                 (host_type_idx == P ? "P" : "C") << ";";
         
-            data_file << "dI" << (host_type_idx == P ? "P" : "C") << "dt;";
+            data_file << "dI" 
+                << (host_type_idx == P ? "P" : "C") 
+                << (phage_type_idx == G1 ? "G1" : "G2") 
+                << "dt;";
         }
     }
 
