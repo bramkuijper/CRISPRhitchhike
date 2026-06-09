@@ -220,6 +220,8 @@ void Solver::write_data()
 {
     update_N();
 
+    double dNdt{0.0};
+
     data_file << time_step << ";";
 
     // totals for each of the categories c and p
@@ -248,6 +250,8 @@ void Solver::write_data()
 
         data_file << clamp(dSdt(static_cast<HostType>(host_type_idx))) << ";";
 
+        dNdt += dSdt(static_cast<HostType>(host_type_idx));
+
         for (int phage_type_idx = 0; 
                 phage_type_idx < 2; ++phage_type_idx)
         {
@@ -263,9 +267,13 @@ void Solver::write_data()
             data_file << clamp(
                     dIdt(static_cast<HostType>(host_type_idx), 
                         static_cast<PhageType>(phage_type_idx))) << ";";
+        
+            dNdt += dIdt(static_cast<HostType>(host_type_idx), 
+                        static_cast<PhageType>(phage_type_idx));
         }
-    }
+    } // end for host_type_idx
 
+    data_file << clamp(dNdt) << ";";
     data_file << clamp(N) << ";" << std::endl;
 } // end void Solver::write_data()
 
@@ -297,7 +305,7 @@ void Solver::write_data_headers()
         }
     }
 
-    data_file << "N;" << std::endl;
+    data_file << "dNdt;N;" << std::endl;
 }  // end write_data_headers()
 
 void Solver::write_parameters()

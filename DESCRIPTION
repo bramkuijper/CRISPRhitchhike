@@ -1,8 +1,8 @@
 Package: CRISPRhitchhike
 Type: Package
 Title: Simulate ODEs of hitchhiking due to CRISPR
-Version: 1.17
-Date: 2026-06-08
+Version: 1.18
+Date: 2026-06-09
 Authors@R: person("Bram", "Kuijper", ,email = "a.l.w.kuijper@exeter.ac.uk", role=c("aut","cre"))
 Description: This package provides the numerical solutions of the ODE system by Domingues et al. Use 
     the function CRISPRhh to run the model.
