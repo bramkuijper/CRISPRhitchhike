@@ -384,7 +384,7 @@ double Solver::dSdt(HostType host_idx) const
             (1.0 - params.kappa * N) * popsize[host_idx]
             + params.gamma[host_idx][G1] * popsize_infected[host_idx][G1]
             + params.gamma[host_idx][G2] * popsize_infected[host_idx][G2]
-            - (params.dS[host_idx] 
+            - (d(host_idx)
                 + params.psi[G1] * (host_idx == C ? 1.0 - params.pi : 1.0) 
                     * (params.demog_feedback ? popsize_infected[P][G1] + 
                         popsize_infected[C][G1] : 1.0)
@@ -396,7 +396,7 @@ double Solver::dSdt(HostType host_idx) const
 } // end Solver::dSdt()
 
 
-// fecundity of susceptible individuals
+// fecundity rate of susceptible individuals
 double Solver::b(HostType host_idx) const
 {
     return(params.FS * std::exp(-params.c * (
@@ -405,6 +405,13 @@ double Solver::b(HostType host_idx) const
                         : 
                         0.0)));
 
+}
+
+// death rate of susceptible individuals
+double Solver::d(HostType host_idx) const
+{
+    return(params.dS[host_idx] * 
+            std::exp(-params.c * (host_idx == C ? params.pi : 0.0)));
 }
 
 double Solver::b(HostType host_idx, PhageType phage_idx) const
@@ -416,6 +423,13 @@ double Solver::b(HostType host_idx, PhageType phage_idx) const
                         0.0)));
 }
 
+// death rate of infected individuals
+double Solver::d(HostType host_idx, PhageType phage_idx) const
+{
+    return(params.dI[host_idx][phage_idx] * 
+            std::exp(-params.c * (host_idx == C ? params.pi : 0.0)));
+}
+
 double Solver::b(HostType host_idx, PhageType phage1_idx, PhageType phage2_idx) const
 {
     return(params.FGB * std::exp(-params.c * (
@@ -423,6 +437,13 @@ double Solver::b(HostType host_idx, PhageType phage1_idx, PhageType phage2_idx) 
                         params.pi 
                         : 
                         0.0)));
+}
+
+// death rate of infected individuals
+double Solver::dBG(HostType host_idx) const
+{
+    return(params.dBG[host_idx] * 
+            std::exp(-params.c * (host_idx == C ? params.pi : 0.0)));
 }
 
 // infected differential
@@ -434,7 +455,7 @@ double Solver::dIdt(HostType host_idx, PhageType phage_idx) const
                 (host_idx == C && phage_idx == G1 ? 1.0 - params.pi : 1.0) * 
                 (params.demog_feedback ? popsize_infected[P][phage_idx] + 
                                         popsize_infected[C][phage_idx] : 1.0)
-                - (params.gamma[host_idx][phage_idx] + params.dI[host_idx][phage_idx]
+                - (params.gamma[host_idx][phage_idx] + d(host_idx,phage_idx)
                         + params.sigma * params.psi[!phage_idx] * 
                         (host_idx == C && phage_idx != G1 ? 1.0 - params.pi : 1.0) *
                             (params.demog_feedback ? 
@@ -462,5 +483,5 @@ double Solver::dIGBdt(HostType host_idx) const
                 (params.demog_feedback ? popsize_infected[host_idx][G2] +
                  popsize_infected[!host_idx][G2] : 1.0)
             - (params.gamma[host_idx][G1] + params.gamma[host_idx][G2] 
-                + params.dBG[host_idx]) * popsize_superinfected[host_idx]);
+                + dBG(host_idx)) * popsize_superinfected[host_idx]);
 }

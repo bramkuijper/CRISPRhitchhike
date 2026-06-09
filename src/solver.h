@@ -55,14 +55,22 @@ class Solver
 
         double dIGBdt(HostType host_idx) const;
 
+        // fecundity of susceptible individuals
         double b(HostType host_idx) const;
+        // death rate of susceptible individuals
+        double d(HostType host_idx) const;
 
-        // fecundity of infected individuals
+        // fecundity rate of infected individuals
         double b(HostType host_idx, PhageType phage_idx) const;
+        // death rate of infected individuals
+        double d(HostType host_idx, PhageType phage_idx) const;
 
         // fecundity of superinfected individuals
         double b(HostType host_idx, PhageType phage1_idx, 
                 PhageType phage2_idx) const;
+        
+        // death rate of superinfected individuals
+        double dBG(HostType host_idx) const;
 
         void write_data();
         void write_data_headers();
