@@ -63,8 +63,8 @@ class Parameters
         // this is to output files to string without having
         // later c++ code (i.e., stod) choke on reading back in
         // the output
-        double dbl_min_val{std::numeric_limits<double>::min()*10};
-        double dbl_max_val{std::numeric_limits<double>::max()*10};
+        double dbl_min_val{std::numeric_limits<double>::lowest()*2};
+        double dbl_max_val{std::numeric_limits<double>::max()*2};
         
         // Euler's constant
         double eul{0.001};

@@ -250,7 +250,7 @@ void Solver::write_data()
 
         data_file << clamp(dSdt(static_cast<HostType>(host_type_idx))) << ";";
 
-        dNdt += dSdt(static_cast<HostType>(host_type_idx));
+        dNdt += clamp(dSdt(static_cast<HostType>(host_type_idx)));
 
         for (int phage_type_idx = 0; 
                 phage_type_idx < 2; ++phage_type_idx)
@@ -268,9 +268,13 @@ void Solver::write_data()
                     dIdt(static_cast<HostType>(host_type_idx), 
                         static_cast<PhageType>(phage_type_idx))) << ";";
         
-            dNdt += dIdt(static_cast<HostType>(host_type_idx), 
-                        static_cast<PhageType>(phage_type_idx));
+            dNdt += clamp(dIdt(static_cast<HostType>(host_type_idx), 
+                        static_cast<PhageType>(phage_type_idx)));
+
+
         }
+            
+//        dNdt += dIGBdt(static_cast<HostType>(host_type_idx));
     } // end for host_type_idx
 
     data_file << clamp(dNdt) << ";";
